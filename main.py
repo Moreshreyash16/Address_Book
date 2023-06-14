@@ -20,7 +20,7 @@ def main():
     address_books={}
     while True:
         print("\n-------Addressbook-------")
-        print(" 1 Add AddressBook \n 2 Update AddressBook \n 3 Display \n 4 Display All contact \n 5 Delete Adressbook \n 6 Exit" )
+        print(" 1 Add AddressBook \n 2 Update AddressBook \n 3 Display \n 4 Display All contact \n 5 Delete Adressbook \n 6 Search \n 7 Exit" )
         print("--------------------------")
         try:
             choice = int(input("Enter your choice : "))
@@ -178,6 +178,24 @@ def main():
                     logger.info("Contact not found")
             
             elif choice==6:
+                print("-----Search Menu------")
+                print(" 1 Search by State \n 2 Search by City")
+                print("--------------------")
+                try:
+                    user_choice=int(input("Enter choice: "))
+                    if user_choice==1:
+                        place=input("Enter the state : ")
+                        for key,value in address_books.items():
+                            value.search_by_place(place,user_choice)
+                    elif user_choice==2:
+                        place=input("Enter the City : ")
+                        for key,value in address_books.items():
+                            value.search_by_place(place,user_choice)
+                    else:
+                        logger.info("Enter a valid number")
+                except ValueError :
+                    logger.error("Please Enter a integer")
+            elif choice==7:
                 break
             else:
                 print("Invalid choice. Please try again.")
