@@ -164,6 +164,17 @@ class AddressBook:
             contact.email = new_email
         print("Contact updated succesfully")
     
+    def remove_contact(self,contact):
+        """
+        Description:
+            It Deletes the contact from Addressbook
+        Parameter:
+            contact: Takes the contact as a input
+        Return:
+            None
+        """
+        self.contacts.remove(contact)
+    
     
 
 
