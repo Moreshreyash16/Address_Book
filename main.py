@@ -50,17 +50,20 @@ def main():
                             sub_choice = int(input("Enter your choice : "))
                             if sub_choice==1 :
                                 first_name = input("\nEnter first name: ")
-                                last_name = input("Enter last name: ")
-                                address = input("Enter address: ")
-                                city = input("Enter city: ")
-                                state = input("Enter state: ")
-                                zip_code = input("Enter zip code: ")
-                                phone_number = input("Enter phone number: ")
-                                email = input("Enter email: ")
+                                if current_address_book.search_contact(first_name):
+                                    logger.info(" This is name already exits please enter a new name!!! \n")
+                                else:
+                                    last_name = input("Enter last name: ")
+                                    address = input("Enter address: ")
+                                    city = input("Enter city: ")
+                                    state = input("Enter state: ")
+                                    zip_code = input("Enter zip code: ")
+                                    phone_number = input("Enter phone number: ")
+                                    email = input("Enter email: ")
 
-                                contact = Contact(first_name, last_name, address, city, state, zip_code, phone_number, email)
-                                current_address_book.add_contact(contact)
-                                logger.info("Contact added Sucessfully!!!!")
+                                    contact = Contact(first_name, last_name, address, city, state, zip_code, phone_number, email)
+                                    current_address_book.add_contact(contact)
+                                    logger.info("Contact added Sucessfully!!!!")
 
                             elif sub_choice==2:
                                 if len(current_address_book.contacts)==0:
