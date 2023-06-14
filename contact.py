@@ -9,3 +9,4 @@ class Contact:
         self.zip_code = zip_code
         self.phone_number = phone_number
         self.email = email
+
