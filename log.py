@@ -4,6 +4,5 @@ handlers=[
         logging.StreamHandler(),  # Stream logs to the console
         logging.FileHandler('address,log')  # Store logs in a file
     ])
-
     # Create a logger
 logger = logging.getLogger('my_logger')
