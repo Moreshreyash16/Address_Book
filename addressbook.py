@@ -1,4 +1,6 @@
 # it creates the class addressbook
+from log import logging
+logger = logging.getLogger()
 class AddressBook:
     def __init__(self):
         self.contacts = []
@@ -69,7 +71,7 @@ class AddressBook:
             None
         """
         self.contacts[index].first_name = new_firstname
-        print("Contact updated succesfully")
+        logger.info("Contact updated succesfully")
 
     def update_lastname(self,new_lastname,index):
         """
@@ -82,7 +84,7 @@ class AddressBook:
             None
         """
         self.contacts[index].last_name = new_lastname
-        print("Contact updated succesfully")
+        logger.info("Contact updated succesfully")
 
     def update_address(self,new_address,index):
         """
@@ -95,7 +97,7 @@ class AddressBook:
             None
         """
         self.contacts[index].address = new_address
-        print("Contact updated succesfully")
+        logger.info("Contact updated succesfully")
 
     def update_city(self,new_city,index):
         """
@@ -108,7 +110,7 @@ class AddressBook:
             None
         """
         self.contacts[index].city = new_city
-        print("Contact updated succesfully")
+        logger.info("Contact updated succesfully")
 
     def update_state(self,new_state,index):
         """
@@ -121,7 +123,7 @@ class AddressBook:
             None
         """
         self.contacts[index].state = new_state
-        print("Contact updated succesfully")
+        logger.info("Contact updated succesfully")
 
     def update_zipcode(self,new_zipcode,index):
         """
@@ -134,7 +136,7 @@ class AddressBook:
             None
         """
         self.contacts[index].zipcode = new_zipcode
-        print("Contact updated succesfully")
+        logger.info("Contact updated succesfully")
 
     def update_phonenumber(self,new_phonenumber,index):
         """
@@ -147,7 +149,7 @@ class AddressBook:
             None
         """
         self.contacts[index].last_name = new_phonenumber
-        print("Contact updated succesfully")
+        logger.info("Contact updated succesfully")
     
     def update_email(self,new_email):
         """
@@ -161,7 +163,7 @@ class AddressBook:
         """
         for contact in self.contacts:
             contact.email = new_email
-        print("Contact updated succesfully")
+        logger.info("Contact updated succesfully")
     
     def remove_contact(self,contact):
         """
@@ -173,8 +175,8 @@ class AddressBook:
             None
         """
         self.contacts.remove(contact)
- 
-    
+
+
     
 
 
