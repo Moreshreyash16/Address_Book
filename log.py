@@ -5,6 +5,5 @@ handlers=[
         logging.FileHandler('address,log')  # Store logs in a file
     ])
 
-
     # Create a logger
 logger = logging.getLogger('my_logger')
