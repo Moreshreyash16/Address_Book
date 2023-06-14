@@ -176,7 +176,6 @@ class AddressBook:
         """
         self.contacts.remove(contact)
 
-
     
 
 
