@@ -1,13 +1,13 @@
 '''
 @Author: Shreyash More
 
-@Date: 2023-06-14 15:11:30
+@Date: 2023-06-14 19:11:30
 
 @Last Modified by: Shreyash More
 
-@Last Modified time: 2023-06-14 15:11:30
+@Last Modified time: 2023-06-14 19:32:30
 
-@Title : Address book uc 3 to add and update the contact
+@Title : Address book uc 4 to Delete the contact
 
 '''
 from addressbook import AddressBook
@@ -18,11 +18,11 @@ def main():
     address_book=AddressBook()
     while(True):
         print("----Contact-Menu----")
-        print("\n 1 Add Contact \n 2 Display \n 3 Update Contact \n 4 Exit ")
+        print("\n 1 Add Contact \n 2 Delete Contact \n 3 Display \n 4 Update Contact \n 5 Exit ")
         print("-----------------")
         try:
             choice = int(input("Enter your choice : "))
-            if choice==1 :
+            if choice== 1 :
                 first_name = input("Enter first name: ")
                 last_name = input("Enter last name: ")
                 address = input("Enter address: ")
@@ -36,7 +36,25 @@ def main():
                 address_book.add_contact(contact)
                 print("Contact added Sucessfully!!!!\n")
 
-            elif choice == 2:
+            elif choice== 2:
+                if len(address_book.contacts)==0:
+                    print("There is no contact available for Deletion,Plss Add one\n")
+                else:
+                    name=input("The name of your contact that you want to delete : ")
+                    search=address_book.search_contact(name)
+                    if search:
+                        print("Are you sure you want to delete this contact? (y/n): ")
+                        confirm = input("(y/n) : ")
+                        if confirm.lower() == 'y':
+                            address_book.remove_contact(search)
+                            print("Contact deleted Sucessfully!!!!/n")
+                        elif confirm.lower()=="n":
+                            print("Deletion cancelled")
+                        else:
+                            print("Enter valid choice")
+                    else:
+                        print("Contact not found/n")
+            elif choice == 3:
                 first_name = input("Enter first name: ")
                 contact = address_book.search_contact(first_name)
                 if contact:
@@ -44,7 +62,7 @@ def main():
                 else:
                    print("No contact found")
 
-            elif choice ==3:
+            elif choice == 4:
                 name=input("The name of your contact that you want to edit : ")
                 search=address_book.search_contact(name) 
                 if search:
@@ -88,7 +106,7 @@ def main():
                             print("Enter a integer")
                 else:
                     print("Name not found\n")
-            elif choice ==4:
+            elif choice == 5:
                 break
             else:
                 print("Enter a valid number!!!\n")
