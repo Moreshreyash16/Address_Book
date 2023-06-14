@@ -35,6 +35,18 @@ class AddressBook:
             print("Phone Number: ", contact.phone_number)
             print("Email: ", contact.email)
         
+    def display_firstname(self):
+        """
+        Description:
+            It prints the first_name 
+        Parameter:
+            None
+        Return:
+            None
+        """
+        for contact in self.contacts:
+            print(contact.first_name)
+    
     def search_contact(self, first_name):
         """
         Description:
