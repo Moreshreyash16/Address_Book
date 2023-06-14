@@ -189,6 +189,15 @@ class AddressBook:
         self.contacts.remove(contact)
     
     def search_by_place(self,place,choice):
+         """
+        Description:
+            It prints the contact in Addressbook according to state or city
+        Parameter:
+            place: Takes the place as a input
+            choice:Take choice as input
+        Return:
+            None
+        """
         for contact in self.contacts:
             if choice==1:
                 if contact.state == place:
