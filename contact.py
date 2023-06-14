@@ -10,4 +10,3 @@ class Contact:
         self.phone_number = phone_number
         self.email = email
 
-
