@@ -11,4 +11,3 @@ class Contact:
         self.email = email
 
 
-
