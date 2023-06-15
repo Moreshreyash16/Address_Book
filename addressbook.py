@@ -58,7 +58,6 @@ class AddressBook:
         index = self.contacts.index(contact)
         return index
     
-    
     def update_firstname(self,new_firstname,index):
         """
         Description:
