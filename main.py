@@ -20,13 +20,15 @@ def main():
     address_books={}
     while True:
         print("\n-------Addressbook-------")
-        print(" 1 Add AddressBook \n 2 Update AddressBook \n 3 Display \n 4 Display All contact \n 5 Delete Adressbook \n 6 Search \n 7 Exit" )
+        print(" 1 Add AddressBook \n 2 Update AddressBook \n 3 Display \n 4 Display All contact \n 5 Delete Adressbook \n 6 View \n 7 Exit" )
         print("--------------------------")
         try:
             choice = int(input("Enter your choice : "))
             if choice ==1:
                 name=input("Enter a name of new Address Book : ")
-                if name not in address_books:
+                if name=="":
+                    print("Enter a valid name")
+                elif name not in address_books:
                     address_books[name]=AddressBook()
                     logger.info("Address book created Succesfully")
                 else:
@@ -61,9 +63,12 @@ def main():
                                     phone_number = input("Enter phone number: ")
                                     email = input("Enter email: ")
 
-                                    contact = Contact(first_name, last_name, address, city, state, zip_code, phone_number, email)
-                                    current_address_book.add_contact(contact)
-                                    logger.info("Contact added Sucessfully!!!!")
+                                    if first_name and last_name and address and city and state and zip_code and email !="":
+                                        contact = Contact(first_name, last_name, address, city, state, zip_code, phone_number, email)
+                                        current_address_book.add_contact(contact)
+                                        logger.info("Contact added Sucessfully!!!!")
+                                    else:
+                                        print("Enter a valid input")
 
                             elif sub_choice==2:
                                 if len(current_address_book.contacts)==0:
@@ -88,8 +93,8 @@ def main():
                             elif sub_choice==3:
                                 name=input("The name of your contact that you want to edit : ")
                                 search=current_address_book.search_contact(name) 
-                                c_index=current_address_book.update_contact(contact)
                                 if search:
+                                    c_index=current_address_book.update_contact(search)
                                     while(True):
                                         print("What do you want to edit ? ")
                                         print("\n----Editing Menu-----")
@@ -178,19 +183,18 @@ def main():
                     logger.info("Contact not found")
             
             elif choice==6:
-                print("-----Search Menu------")
-                print(" 1 Search by State \n 2 Search by City")
+                print("-----View Menu------")
+                print(" 1 View by State \n 2 View by City")
                 print("--------------------")
                 try:
                     user_choice=int(input("Enter choice: "))
                     if user_choice==1:
-                        place=input("Enter the state : ")
                         for key,value in address_books.items():
-                            value.search_by_place(place,user_choice)
+                            print(value.search_by_place(user_choice))
                     elif user_choice==2:
-                        place=input("Enter the City : ")
                         for key,value in address_books.items():
-                            value.search_by_place(place,user_choice)
+                            print(f"\n Address book : {key}")
+                            print(value.search_by_place(user_choice))
                     else:
                         logger.info("Enter a valid number")
                 except ValueError :
