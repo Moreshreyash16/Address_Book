@@ -195,10 +195,9 @@ class AddressBook:
         Description:
             It prints the contact in Addressbook according to state or city
         Parameter:
-            place: Takes the place as a input
             choice:Take choice as input
         Return:
-            None
+            Dictionary of names
         """
         my_dict={}
         for contact in self.contacts:
