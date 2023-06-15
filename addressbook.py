@@ -188,7 +188,7 @@ class AddressBook:
         """
         self.contacts.remove(contact)
     
-    def search_by_place(self,choice):
+    def search_by_place(self,choice,place):
         """
         Description:
             It prints the contact in Addressbook according to state or city
@@ -198,20 +198,15 @@ class AddressBook:
         Return:
             None
         """
-        my_dict={}
+        count=0
         for contact in self.contacts:
             if choice==1:
-                if contact.state in my_dict:
-                    my_dict[contact.state]=contact.first_name
-                else:
-                    my_dict[contact.state]=contact.first_name
+                if contact.state==place:
+                    count+=1
             else:
-                if contact.city:
-                    if contact.city in my_dict:
-                        my_dict[contact.city]+=[contact.first_name]
-                    else:
-                        my_dict[contact.city]=[contact.first_name]
-        return my_dict
+                if contact.city==place:
+                    count+=1
+        return count
     
     
 
