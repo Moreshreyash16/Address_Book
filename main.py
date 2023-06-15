@@ -183,18 +183,24 @@ def main():
                     logger.info("Contact not found")
             
             elif choice==6:
-                print("-----View Menu------")
-                print(" 1 View by State \n 2 View by City")
+                print("-----Search Menu------")
+                print(" 1 Search by State \n 2 Search by City")
                 print("--------------------")
                 try:
                     user_choice=int(input("Enter choice: "))
                     if user_choice==1:
+                        place=input("Enter state: ")
+                        count=0
                         for key,value in address_books.items():
-                            print(value.search_by_place(user_choice))
+                            count+=value.search_by_place(user_choice,place)
+                        print(f"The total no of contact in {place} are : {count}")
+                    
                     elif user_choice==2:
+                        place=input("Enter city: ")
+                        count=0
                         for key,value in address_books.items():
-                            print(f"\n Address book : {key}")
-                            print(value.search_by_place(user_choice))
+                            count+=value.search_by_place(user_choice,place)
+                        print(f"The total no of contact in {city} are : {count}")
                     else:
                         logger.info("Enter a valid number")
                 except ValueError :
