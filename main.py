@@ -162,8 +162,11 @@ def main():
                     no=1
                     for key,value in address_books.items():
                         print(f"Address book :{no}.{key}")
-                        value.display_firstname()
+                        contacts=value.display_firstname()
                         no+=1
+                        contacts =sorted(contacts)
+                        for i in range(len(contacts)):
+                            print(f" {i+1}.{contacts[i]}")
                 else:
                     logger.info(" No contacts found \n")
 
@@ -183,24 +186,17 @@ def main():
                     logger.info("Contact not found")
             
             elif choice==6:
-                print("-----Search Menu------")
-                print(" 1 Search by State \n 2 Search by City")
+                print("-----View Menu------")
+                print(" 1 View by State \n 2 View by City")
                 print("--------------------")
                 try:
                     user_choice=int(input("Enter choice: "))
                     if user_choice==1:
-                        place=input("Enter state: ")
-                        count=0
                         for key,value in address_books.items():
-                            count+=value.search_by_place(user_choice,place)
-                        print(f"The total no of contact in {place} are : {count}")
-                    
+                            print(value.search_by_place(user_choice))
                     elif user_choice==2:
-                        place=input("Enter city: ")
-                        count=0
                         for key,value in address_books.items():
-                            count+=value.search_by_place(user_choice,place)
-                        print(f"The total no of contact in {city} are : {count}")
+                            print(value.search_by_place(user_choice))
                     else:
                         logger.info("Enter a valid number")
                 except ValueError :
