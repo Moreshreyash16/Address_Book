@@ -196,13 +196,13 @@ class AddressBook:
             place: Takes the place as a input
             choice:Take choice as input
         Return:
-            None
+            Dictionary
         """
         my_dict={}
         for contact in self.contacts:
             if choice==1:
                 if contact.state in my_dict:
-                    my_dict[contact.state]=contact.first_name
+                    my_dict[contact.state]+=contact.first_name
                 else:
                     my_dict[contact.state]=contact.first_name
             else:
