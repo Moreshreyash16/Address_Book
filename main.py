@@ -186,8 +186,8 @@ def main():
                     logger.info("Contact not found")
             
             elif choice==6:
-                print("-----View Menu------")
-                print(" 1 View by State \n 2 View by City")
+                print("-----Sort Menu------")
+                print(" 1 Sort by State \n 2 Sort by City")
                 print("--------------------")
                 try:
                     user_choice=int(input("Enter choice: "))
