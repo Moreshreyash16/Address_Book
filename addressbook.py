@@ -44,8 +44,10 @@ class AddressBook:
         Return:
             None
         """
+        contact_list=[]
         for contact in self.contacts:
-            print(contact.first_name)
+            contact_list.append(contact.first_name)
+        return contact_list
     
     def search_contact(self, first_name):
         """
@@ -188,7 +190,7 @@ class AddressBook:
         """
         self.contacts.remove(contact)
     
-    def search_by_place(self,choice,place):
+    def search_by_place(self,choice):
         """
         Description:
             It prints the contact in Addressbook according to state or city
@@ -198,15 +200,20 @@ class AddressBook:
         Return:
             None
         """
-        count=0
+        my_dict={}
         for contact in self.contacts:
             if choice==1:
-                if contact.state==place:
-                    count+=1
+                if contact.state in my_dict:
+                    my_dict[contact.state]+=[contact.first_name]
+                else:
+                    my_dict[contact.state]=[contact.first_name]
             else:
-                if contact.city==place:
-                    count+=1
-        return count
+                if contact.city in my_dict:
+                    my_dict[contact.city]+=[contact.first_name]
+                else:
+                        my_dict[contact.city]=[contact.first_name]
+        
+        return dict(sorted(my_dict.items()))
     
     
 
