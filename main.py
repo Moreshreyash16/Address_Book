@@ -1,26 +1,25 @@
 '''
 @Author: Shreyash More
 
-@Date: 2023-06-14 19:11:30
+@Date: 2023-06-16 20:03:30
 
 @Last Modified by: Shreyash More
 
-@Last Modified time: 2023-06-14 19:32:30
+@Last Modified time: 2023-06-16 20:03:30
 
-@Title : Address book uc 6 to add multiple AddressBook
+@Title : Address book uc 13 to save and view AddressBook to file
 
 '''
-from addressbook import AddressBook
-from contact import Contact
+from addressbook import AddressBook,Contact
 from log import logging
-
+import os 
 
 def main():
     logger = logging.getLogger()
     address_books={}
     while True:
         print("\n-------Addressbook-------")
-        print(" 1 Add AddressBook \n 2 Update AddressBook \n 3 Display \n 4 Display All contact \n 5 Delete Adressbook \n 6 View \n 7 Exit" )
+        print(" 1 Add AddressBook \n 2 Update AddressBook \n 3 Display \n 4 Display All contact \n 5 Delete Adressbook \n 6 Sort \n 7 View Addresbook \n 8 Exit" )
         print("--------------------------")
         try:
             choice = int(input("Enter your choice : "))
@@ -202,6 +201,30 @@ def main():
                 except ValueError :
                     logger.error("Please Enter a integer")
             elif choice==7:
+                try:
+                    print("\n------- File Menu -------")
+                    print("1 View \n2 Save")
+                    print("----------------------------")
+                    view_choice=int(input("Enter choice :"))
+                    filename=(input("Enter a filename : "))              
+                    if view_choice==1:
+                        try:
+                            with open(filename, 'r') as file:
+                                print("Address Book File Contents:")
+                                print(file.read())
+                        except:
+                            print(f"{filename} not found")
+                    elif view_choice==2:
+                        if current_address_book:
+                            for key,value in address_books.items():
+                                current_address_book.save_to_file(filename,key)
+                            logger.info("file saved successfully!!")
+                    else:
+                        print("Enter valid number")
+                except:
+                    print("Plss add contact or Addressbook ") 
+                        
+            elif choice==8:
                 break
             else:
                 print("Invalid choice. Please try again.")
