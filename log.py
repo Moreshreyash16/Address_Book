@@ -7,3 +7,4 @@ handlers=[
     # Create a logger
 logger = logging.getLogger('my_logger')
 
+
