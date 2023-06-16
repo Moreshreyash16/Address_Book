@@ -1,10 +1,27 @@
 # it creates the class addressbook
 from log import logging
+
 logger = logging.getLogger()
+class Contact:
+    def __init__(self, first_name, last_name, address, city, state, zip_code, phone_number, email):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.address = address
+        self.city = city
+        self.state = state
+        self.zip_code = zip_code
+        self.phone_number = phone_number
+        self.email = email
+    
+    def to_string(self):
+        return f" \n  first Name : {self.first_name} \n  Last name :{self.last_name}\n  Address :{self.address}\n  City :{self.city}\n  State :{self.state}\n  zip-code :{self.zip_code}\n  Phone number :{self.phone_number}\n  Email :{self.email}\n"
+
+    
 class AddressBook:
     def __init__(self):
         self.contacts = []
-
+    
+    
     def add_contact(self, contact):
         """
         Description:
@@ -214,10 +231,20 @@ class AddressBook:
         
         return dict(sorted(my_dict.items()))
     
+    def save_to_file(self,filename,keys):
+        with open(filename, "a") as file:
+            file.write(f"\nAddress Book : {keys} \n")
+            for contact in self.contacts:
+                file.write(f"{contact.to_string()}")
     
-
-
-         
+    def view_address_book_file(self,filename):
+            try:
+                with open(filename, 'r') as file:
+                    print("Address Book File Contents:")
+                    print(file.read())
+            except FileNotFoundError:
+                print(f"File '{filename}' not found!")
+     
     
     
     
