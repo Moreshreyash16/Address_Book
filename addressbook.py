@@ -278,6 +278,21 @@ class AddressBook:
             writer.writerow(["First Name", "Last Name", "Address", "City", "State", "Zip Code", "Phone Number", "Email"])
             for contact in self.contacts:
                 writer.writerow(contact.to_list())
+    
+    def save_to_json(self, filename):
+        """
+        Description:
+            It saves the Addressbook to json file
+        Parameter:
+            filename :Take filename as input
+        Return:
+            None
+        """
+        data = []
+        for contact in self.contacts:
+            data.append(contact.__dict__)
+        with open(filename, "w") as file:
+            json.dump(data, file, indent=4)
             
      
     
