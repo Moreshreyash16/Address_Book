@@ -7,7 +7,7 @@
 
 @Last Modified time: 2023-06-16 20:03:30
 
-@Title : Address book uc 13 to save and view AddressBook to file
+@Title : Address book uc 14 to save and view AddressBook to a csv file
 
 '''
 from addressbook import AddressBook,Contact
@@ -203,7 +203,7 @@ def main():
             elif choice==7:
                 try:
                     print("\n------- File Menu -------")
-                    print("1 View \n2 Save")
+                    print("1 View \n2 Save to txt \n3 Save to csv")
                     print("----------------------------")
                     view_choice=int(input("Enter choice :"))
                     filename=(input("Enter a filename : "))              
@@ -215,6 +215,12 @@ def main():
                         except:
                             print(f"{filename} not found")
                     elif view_choice==2:
+                        if current_address_book:
+                            for key,value in address_books.items():
+                                current_address_book.save_to_file(filename,key)
+                            logger.info("file saved successfully!!")
+                    
+                    elif view_choice==3:
                         if current_address_book:
                             for key,value in address_books.items():
                                 current_address_book.save_to_file(filename,key)
