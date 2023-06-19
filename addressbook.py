@@ -1,5 +1,6 @@
 # it creates the class addressbook
 import csv
+import json
 from log import logging
 
 logger = logging.getLogger()
