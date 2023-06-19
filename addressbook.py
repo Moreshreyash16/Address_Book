@@ -1,4 +1,5 @@
 # it creates the class addressbook
+import csv
 from log import logging
 
 logger = logging.getLogger()
@@ -232,18 +233,52 @@ class AddressBook:
         return dict(sorted(my_dict.items()))
     
     def save_to_file(self,filename,keys):
+        """
+        Description:
+            It saves the Addressbook to text file
+        Parameter:
+            filename :Take filename as input
+            Keys: Take addressbook name as input
+        Return:
+            None
+        """
         with open(filename, "a") as file:
             file.write(f"\nAddress Book : {keys} \n")
             for contact in self.contacts:
                 file.write(f"{contact.to_string()}")
     
+
     def view_address_book_file(self,filename):
-            try:
-                with open(filename, 'r') as file:
-                    print("Address Book File Contents:")
-                    print(file.read())
-            except FileNotFoundError:
-                print(f"File '{filename}' not found!")
+        """
+        Description:
+            It views the Addressbook from file
+        Parameter:
+            filename :Take filename as input
+        Return:
+            None
+        """
+        try:
+            with open(filename, 'r') as file:
+                print("Address Book File Contents:")
+                print(file.read())
+        except FileNotFoundError:
+            print(f"File '{filename}' not found!")
+     
+    def save_to_csv(self, filename):
+        """
+        Description:
+            It saves the Addressbook to a csv file
+        Parameter:
+            filename :Take filename as input
+        Return:
+            None
+        """
+        with open(filename, "w", newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(["First Name", "Last Name", "Address", "City", "State", "Zip Code", "Phone Number", "Email"])
+            for contact in self.contacts:
+                writer.writerow(contact.to_list())
+            
      
     
     
